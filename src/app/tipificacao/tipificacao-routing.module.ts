@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TipificacaoComponent } from './tipificacao.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: TipificacaoComponent
+    path: 'categorias',
+    loadChildren: () => import('./categoria-servico/categoria-servico.module').then(m => m.CategoriaServicoModule)
   }
 ];
 

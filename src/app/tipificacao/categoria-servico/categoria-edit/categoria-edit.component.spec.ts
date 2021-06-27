@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TipificacaoComponent } from './tipificacao.component';
+import { CategoriaEditComponent } from './categoria-edit.component';
 
-describe('TipificacaoComponent', () => {
-  let component: TipificacaoComponent;
-  let fixture: ComponentFixture<TipificacaoComponent>;
+describe('CategoriaEditComponent', () => {
+  let component: CategoriaEditComponent;
+  let fixture: ComponentFixture<CategoriaEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TipificacaoComponent ]
+      declarations: [ CategoriaEditComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TipificacaoComponent);
+    fixture = TestBed.createComponent(CategoriaEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
