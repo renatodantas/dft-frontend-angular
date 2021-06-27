@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tipificacao',
   templateUrl: './tipificacao.component.html',
-  styleUrls: ['./tipificacao.component.scss']
+  styleUrls: ['./tipificacao.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TipificacaoComponent implements OnInit {
 
