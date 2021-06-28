@@ -1,5 +1,12 @@
+#logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
 .sidenav-container {
   height: 100%;
+  margin-top: 0.2rem;
 }
 
 .sidenav {
@@ -18,6 +25,6 @@ ul {
 }
 */
 
-mat-sidenav-content {
+.mat-sidenav-content {
   padding: 1rem;
 }

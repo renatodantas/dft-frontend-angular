@@ -14,6 +14,14 @@ export class NavbarService {
           { descricao: 'Unidades', path: 'unidades' },
           { descricao: 'Entregas', path: 'entregas' },
           { descricao: 'Indic. de Produtividade', path: 'produtividades' },
+        ],
+      },
+      {
+        titulo: 'Relatórios', path: 'relatorios', itens: [
+          { descricao: "Relatório Gerencial", path: '' },
+          { descricao: 'Perfis por Usuário', path: '' },
+          { descricao: 'Categorias de Serviço', path: '' },
+          { descricao: 'Unidades', path: '' }
         ]
       }
     ]);
