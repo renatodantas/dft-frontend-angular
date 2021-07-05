@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { CategoriaServico } from 'src/app/shared/models/categoria-servico';
+import { Pageable } from 'src/app/shared/models/pageable';
 import { CategoriaServicoService } from '../categoria-servico.service';
 
 @Component({
@@ -16,18 +16,18 @@ export class CategoriaListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  dataSource!: Observable<CategoriaServico[]>;
+  dataSource: CategoriaServico[] = [];
 
   readonly dataSourceColumns = ['descricao', 'tipo'];
 
   constructor(
-    private service: CategoriaServicoService
+    private service: CategoriaServicoService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.dataSource = this.service.listar().pipe(
-      map(itens => itens.content)
-    );
+    const itens: Pageable<CategoriaServico> = this.route.snapshot.data.itens;
+    this.dataSource = itens.content;
   }
 
 }
