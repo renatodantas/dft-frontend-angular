@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { first } from 'rxjs/operators';
 import { CategoriaServico } from 'src/app/shared/models/categoria-servico';
 import { Pageable } from 'src/app/shared/models/pageable';
 import { CategoriaServicoService } from '../categoria-servico.service';
@@ -12,22 +13,34 @@ import { CategoriaServicoService } from '../categoria-servico.service';
   styleUrls: ['./categoria-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CategoriaListComponent implements OnInit {
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  dataSource: CategoriaServico[] = [];
+export class CategoriaListComponent implements AfterViewInit {
 
   readonly dataSourceColumns = ['descricao', 'tipo'];
 
-  constructor(
-    private service: CategoriaServicoService,
-    private route: ActivatedRoute
-  ) { }
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit(): void {
-    const itens: Pageable<CategoriaServico> = this.route.snapshot.data.itens;
-    this.dataSource = itens.content;
+  dataSource: MatTableDataSource<CategoriaServico> = new MatTableDataSource();
+  loading = false;
+  totalPages = 0;
+  totalElements = 0;
+  pageSize = 0;
+
+  constructor(private service: CategoriaServicoService) { }
+
+  ngAfterViewInit() {
+    this.service.listar().pipe(first()).subscribe(pageable => {
+      this.popularPaginacao(pageable);
+    });
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  private popularPaginacao(pageable: Pageable<CategoriaServico>) {
+    this.dataSource.data = pageable.content;
+    this.totalPages = pageable.totalPages;
+    this.totalElements = pageable.totalElements;
+    this.pageSize = pageable.size;
   }
 
 }

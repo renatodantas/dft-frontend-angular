@@ -25,14 +25,14 @@ export interface Pageable<T> {
   totalPages: number;
   totalElements: number;
   size: number;
-  content: T[],
-  number: number,
+  content: T[];
+  number: number;
   // sort: {
   //   sorted: boolean,
   //   unsorted: boolean,
   //   empty: boolean
   // },
-  first: boolean,
-  last: boolean,
-  empty: boolean
+  first: boolean;
+  last: boolean;
+  empty: boolean;
 }

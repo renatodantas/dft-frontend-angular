@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavbarService } from './components/navbar/navbar.service';
 import { Error404Component } from './pages/error404/error404.component';
+import { MetodologiaPipe } from './pipes/metodologia.pipe';
 
 @NgModule({
   imports: [
@@ -22,13 +23,15 @@ import { Error404Component } from './pages/error404/error404.component';
   ],
   declarations: [
     NavbarComponent,
-    Error404Component
+    Error404Component,
+    MetodologiaPipe,
   ],
   providers: [
     NavbarService
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    // MetodologiaPipe
   ]
 })
 export class SharedModule { }

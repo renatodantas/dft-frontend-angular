@@ -10,11 +10,12 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoriaServicoService {
 
-  private readonly URL = `${environment.backendUrl}/categorias`;
+  readonly URL = `${environment.backendUrl}/categorias`;
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<Pageable<CategoriaServico>> {
+  //this.sort.active, this.sort.direction, this.paginator.pageIndex
+  listar(params?: { sortField?: string, sortOrder?: string, pageIndex?: number }): Observable<Pageable<CategoriaServico>> {
     return this.http.get<Pageable<CategoriaServico>>(
       this.URL,
       { withCredentials: true }

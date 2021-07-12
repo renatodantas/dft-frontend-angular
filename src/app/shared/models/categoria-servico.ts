@@ -1,7 +1,7 @@
-export interface CategoriaServico {
+import { MetodologiaEnum } from "../enums/metodologia.enum";
 
+export interface CategoriaServico {
   id?: number;
   descricao?: string;
-  tipo?: string;
-
+  tipo?: MetodologiaEnum;
 }

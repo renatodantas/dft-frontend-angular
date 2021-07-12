@@ -19,4 +19,4 @@
   <tr mat-row *matRowDef="let row; columns: dataSourceColumns;"></tr>
 </table>
 
-<mat-paginator [length]="resultsLength" [pageSize]="30"></mat-paginator>
+<mat-paginator [length]="totalElements" [pageSize]="pageSize" class="mat-elevation-z2"></mat-paginator>
